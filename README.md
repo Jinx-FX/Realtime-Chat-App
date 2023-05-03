@@ -6,13 +6,17 @@ A full-stack realtime messaging chat application by NextJs
 
 - nextjs
   - rsc >> 'use client'
+  - api 
 
-- next-auth >> Github OAuth (not Google, it's failed)
+- next-auth >> Github OAuth (not Google, it was failed)
 - @upstash/redis >> stored data
+- react-hook-form @hookform/resolvers >> register
+- zod >> validation
 
-- Responsive UI built with TailwindCSS
-- Class merging with tailwind-merge
-- Conditional classes with clsx
-- Variants with class-variance-authority
+- TailwindCSS >> Responsive UI built
+- tailwind-merge >> Class merging
+- clsx >> Conditional classes
+- class-variance-authority >> Variants
+- tailwindcss/forms:plugin >> make form better 
 
 - Built with TypeScript
