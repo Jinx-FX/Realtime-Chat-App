@@ -1,6 +1,6 @@
 import { UpstashRedisAdapter } from '@next-auth/upstash-redis-adapter'
 import { NextAuthOptions } from 'next-auth'
-import GoogleProvider from 'next-auth/providers/google'
+import GithubProvider from 'next-auth/providers/github'
 import { db } from './db'
 
 function getGoogleCredentials() {
@@ -13,7 +13,19 @@ function getGoogleCredentials() {
   if (!clienSecret || clienSecret.length === 0) {
     throw new Error('Missing GOOGLE_CLIENT_SECRET')
   }
+  return { clientId, clienSecret }
+}
 
+function getGithubCredentials() {
+  const clientId = process.env.GITHUB_CLIENT_ID
+  const clienSecret = process.env.GITHUB_CLIENT_SECRET
+
+  if (!clientId || clientId.length === 0) {
+    throw new Error('Missing GITHUB_CLIENT_ID')
+  }
+  if (!clienSecret || clienSecret.length === 0) {
+    throw new Error('Missing GITHUB_CLIENT_SECRET')
+  }
   return { clientId, clienSecret }
 }
 
@@ -26,9 +38,9 @@ export const authOptions: NextAuthOptions = {
     signIn: '/login',
   },
   providers: [
-    GoogleProvider({
-      clientId: getGoogleCredentials().clientId,
-      clientSecret: getGoogleCredentials().clienSecret,
+    GithubProvider({
+      clientId: getGithubCredentials().clientId,
+      clientSecret: getGithubCredentials().clienSecret,
     }),
   ],
   callbacks: {

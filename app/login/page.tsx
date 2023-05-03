@@ -7,10 +7,10 @@ import { toast } from 'react-hot-toast'
 
 const Page: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const loginWithGoogle = async () => {
+  const loginWithGithub = async () => {
     setIsLoading(true)
     try {
-      signIn('google')
+      await signIn('github')
     } catch (error) {
       // display error message to user
       toast.error('Something went wrong with your login')
@@ -33,7 +33,7 @@ const Page: FC = () => {
           isLoading={isLoading}
           type="button"
           className="max-w-sm mx-auto w-full"
-          onClick={loginWithGoogle}>
+          onClick={loginWithGithub}>
           {isLoading ? null : (
             <svg
               className="mr-2 h-4 w-4"
