@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast'
 
 const Page: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const loginWithGithub = async () => {
+  const login = async () => {
     setIsLoading(true)
     try {
       await signIn('github')
@@ -33,7 +33,7 @@ const Page: FC = () => {
           isLoading={isLoading}
           type="button"
           className="max-w-sm mx-auto w-full"
-          onClick={loginWithGithub}>
+          onClick={login}>
           {isLoading ? null : (
             <svg
               className="mr-2 h-4 w-4"

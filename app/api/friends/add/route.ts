@@ -57,6 +57,8 @@ export async function POST(req: Request) {
     await db.sadd(`user:${idToAdd}:incoming_friend_requests`, session.user.id)
     return new Response('OK')
   } catch (error) {
+    console.log(error)
+
     if (error instanceof z.ZodError) {
       return new Response('Invalid request payload', { status: 422 })
     }

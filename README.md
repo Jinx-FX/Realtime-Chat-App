@@ -8,7 +8,7 @@ A full-stack realtime messaging chat application by NextJs
   - rsc >> 'use client'
   - api 
 
-- next-auth >> Github OAuth (not Google, it was failed)
+- next-auth >> Github OAuth APP(not Google, it was failed and the icon is google)
 - @upstash/redis >> stored data
 - react-hook-form @hookform/resolvers >> register
 - zod >> validation
@@ -23,4 +23,4 @@ A full-stack realtime messaging chat application by NextJs
 - Built with TypeScript
 
 
-> 环境变量可以在 [Github](https://github.com/settings/applications/new) 开发者中申请
+> OAUTH 应用可以在 [Github](https://github.com/settings/applications/new) 开发者中申请创建，用于第三方授权

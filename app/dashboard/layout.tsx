@@ -1,5 +1,8 @@
+import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOptions'
 import { Icons } from '@/components/Icons'
 import SignOutButton from '@/components/SignOutButton'
+import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
+import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
 import { SidebarOption } from '@/types/typings'
 import { getServerSession } from 'next-auth'
@@ -7,6 +10,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ReactNode } from 'react'
+
+// Done after the video and optional: add page metadata
+export const metadata = {
+  title: 'Chat App | Dashboard',
+  description: 'Your dashboard',
+}
 
 interface LayoutProps {
   children: ReactNode
@@ -24,6 +33,14 @@ const siderbarOptions: SidebarOption[] = [
 const Layout = async ({ children }: LayoutProps) => {
   const session = await getServerSession(authOptions)
   if (!session) notFound()
+
+  const friends = await getFriendsByUserId(session.user.id)
+  const unseenRequestCount = (
+    (await fetchRedis(
+      'smembers',
+      `user:${session.user.id}:incoming_friend_requests`
+    )) as User[]
+  ).length
 
   return (
     <div className="w-full flex h-screen">
@@ -64,7 +81,12 @@ const Layout = async ({ children }: LayoutProps) => {
               </ul>
             </li>
 
-            <li></li>
+            <li>
+              <FriendRequestSidebarOptions
+                sessionId={session.user.id}
+                initialUnseenRequestCount={unseenRequestCount}
+              />
+            </li>
 
             <li className="-mx-6 mt-auto flex items-center">
               <div className="flex flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leadind-6 text-gray-900">
