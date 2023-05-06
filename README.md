@@ -10,9 +10,10 @@ A full-stack realtime messaging chat application by NextJs
 
 - next-auth >> Github OAuth APP
 - @upstash/redis >> stored data
+- zod >> validation
 - react-hook-form @hookform/resolvers >> register
 - react-hot-toast >> notifications: warning prompt
-- zod >> validation
+- react-textarea-autosize >> content input
 
 - use middleware >> protect sensitiveRoutes and redirect
 

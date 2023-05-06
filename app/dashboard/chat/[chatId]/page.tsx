@@ -1,7 +1,10 @@
+import ChatInput from '@/components/ChatInput'
+import Messages from '@/components/Messages'
 import { getChatMessages } from '@/helpers/get-chat-messages'
 import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 interface PageProps {
@@ -31,7 +34,45 @@ const page = async ({ params }: PageProps) => {
   const chatPartner = JSON.parse(chatPartnerRaw) as User
   const initialMessages = await getChatMessages(chatId)
 
-  return <div>{chatId}</div>
+  return (
+    <div className="flex flex-1 flex-col justify-between h-full max-h-[calc(100vh-6rem)]">
+      <div className="flex justify-between sm:items-center py-3 border-b-2 border-gray-200">
+        <div className="relative flex items-center space-x-4">
+          <div className="relative">
+            <div className="relative w-8 sm:w-12 h-8 sm:h-12">
+              <Image
+                fill
+                referrerPolicy="no-referrer"
+                src={chatPartner.image}
+                alt={`${chatPartner.name} profile picture`}
+                className="rounded-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col leading-tight">
+            <div className="text-xl flex items-center">
+              <span className="text-gray-700 mr-3 font-semibold">
+                {chatPartner.name}
+              </span>
+            </div>
+          </div>
+
+          <span className="text-sm text-gray-600">{chatPartner.email}</span>
+        </div>
+      </div>
+
+      <Messages
+        initialMessages={initialMessages}
+        sessionId={session.user.id}
+        chatId={chatId}
+        chatPartner={chatPartner}
+        sessionImg={session.user.image}
+      />
+
+      <ChatInput chatId={chatId} chatPartner={chatPartner} />
+    </div>
+  )
 }
 
 export default page

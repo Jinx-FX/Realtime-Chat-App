@@ -11,9 +11,8 @@ export async function getChatMessages(chatId: string) {
       -1
     )
 
-    const dbMessages = results.map((message) => {
-      JSON.parse(message) as Message
-    })
+    // Note: don't use `{ }` in `()=>` or add return
+    const dbMessages = results.map((message) => JSON.parse(message) as Message)
 
     const reversedDbMessages = dbMessages.reverse()
 
@@ -22,7 +21,6 @@ export async function getChatMessages(chatId: string) {
     return messages
   } catch (error) {
     console.log(error)
-
     notFound()
   }
 }
