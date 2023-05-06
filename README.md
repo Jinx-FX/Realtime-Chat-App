@@ -8,17 +8,20 @@ A full-stack realtime messaging chat application by NextJs
   - rsc >> 'use client'
   - api 
 
-- next-auth >> Github OAuth APP(not Google, it was failed and the icon is google)
+- next-auth >> Github OAuth APP
 - @upstash/redis >> stored data
 - react-hook-form @hookform/resolvers >> register
+- react-hot-toast >> notifications: warning prompt
 - zod >> validation
 
-- lucide-react >> icon logo, transition
+- use middleware >> protect sensitiveRoutes and redirect
+
+- lucide-react >> UI: icon logo, transition
 - TailwindCSS >> Responsive UI built
 - tailwind-merge >> Class merging
 - clsx >> Conditional classes
 - class-variance-authority >> Variants
-- tailwindcss/forms:plugin >> make form better 
+- tailwindcss/forms >> plugin: make form better 
 
 - Built with TypeScript
 
