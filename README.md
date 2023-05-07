@@ -4,19 +4,35 @@ A full-stack realtime messaging chat application by NextJs
 
 ## Features
 
-- nextjs
-  - rsc >> 'use client'
-  - api 
+NEXTJS:
 
-- next-auth >> Github OAuth APP
-- @upstash/redis >> stored data
+- nextjs
+  - rsc >> use client compoent and server compoent
+  - api >> db crud
+
+Mobile:
+
+- MobileChatLayout >> this component make a mobile nav bar, it's great
+
+OATUH:
+
+- next-auth >> Github OAuth APP >> [Github OAuth Application](https://github.com/settings/applications/new)
+- @upstash/redis >> stored data >> [upstash](https://upstash.com/)
 - zod >> validation
 - react-hook-form @hookform/resolvers >> register
 - react-hot-toast >> notifications: warning prompt
 - react-textarea-autosize >> content input
 
-- pusher pusher-js >> websocket: make realtime spread
+realtime-make:
+
+- pusher pusher-js >> websocket: make realtime spread >> [pusher](https://pusher.com
+)
+
+middleware:
+
 - use middleware >> protect sensitiveRoutes and redirect
+
+UI or style:
 
 - lucide-react >> UI: icon logo, transition
 - TailwindCSS >> Responsive UI built
@@ -26,7 +42,10 @@ A full-stack realtime messaging chat application by NextJs
 - tailwindcss/forms >> plugin: make form better
 - react-loading-skeleton >> loading transition between pages
 
+TypeScript:
+
 - Built with TypeScript
 
+## Referrence
 
-> OAUTH 应用可以在 [Github](https://github.com/settings/applications/new) 开发者中申请创建，用于第三方授权
+- https://github.com/joschan21/nextjs-realtime-chat
