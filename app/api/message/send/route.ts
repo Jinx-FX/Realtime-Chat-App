@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     await Promise.all([
       pusherServer.trigger(
         toPusherKey(`chat:${chatId}`),
-        'incoming_message',
+        'incoming-message',
         message
       ),
       pusherServer.trigger(
