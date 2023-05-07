@@ -21,7 +21,15 @@ const page = async () => {
         -1,
         -1
       )) as string[]
-      const lastMessage = JSON.parse(lastMessageRaw) as Message
+
+      let lastMessage = {
+        senderId: session.user.id,
+        text: '',
+      }
+
+      if (lastMessageRaw) {
+        lastMessage = JSON.parse(lastMessageRaw) as Message
+      }
 
       return {
         ...friend,

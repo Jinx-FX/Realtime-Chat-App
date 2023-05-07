@@ -29,12 +29,12 @@ const FriendRequestSidebarOptions: FC<FriendRequestSidebarOptionsProps> = ({
       setUnseenRequestCount((prev) => prev + 1)
     }
 
-    const addedFriendHandler = () => {
+    const resloveFriendHandler = () => {
       setUnseenRequestCount((prev) => prev - 1)
     }
 
     pusherClient.bind('incoming_friend_requests', friendRequestHandler)
-    pusherClient.bind('new_friend', addedFriendHandler)
+    pusherClient.bind('new_friend', resloveFriendHandler)
 
     return () => {
       pusherClient.unsubscribe(
@@ -42,7 +42,7 @@ const FriendRequestSidebarOptions: FC<FriendRequestSidebarOptionsProps> = ({
       )
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`))
 
-      pusherClient.unbind('new_friend', addedFriendHandler)
+      pusherClient.unbind('new_friend', resloveFriendHandler)
       pusherClient.unbind('incoming_friend_requests', friendRequestHandler)
     }
   }, [sessionId])

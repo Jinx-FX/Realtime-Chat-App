@@ -31,11 +31,11 @@ const Messages: FC<MessagesProps> = ({
       setMessages((prev) => [message, ...prev])
     }
 
-    pusherClient.bind('incoming-message', messageHandler)
+    pusherClient.bind('incoming_message', messageHandler)
 
     return () => {
       pusherClient.unsubscribe(toPusherKey(`chat:${chatId}`))
-      pusherClient.unbind('incoming-message', messageHandler)
+      pusherClient.unbind('incoming_message', messageHandler)
     }
   }, [chatId])
 
