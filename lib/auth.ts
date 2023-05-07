@@ -4,6 +4,7 @@ import GithubProvider from 'next-auth/providers/github'
 import { db } from './db'
 import { fetchRedis } from '@/helpers/redis'
 
+// NOTE: if you use google client, you could use this function and GoogleProvider
 function getGoogleCredentials() {
   const clientId = process.env.GOOGLE_CLIENT_ID
   const clienSecret = process.env.GOOGLE_CLIENT_SECRET

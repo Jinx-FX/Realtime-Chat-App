@@ -15,6 +15,7 @@ A full-stack realtime messaging chat application by NextJs
 - react-hot-toast >> notifications: warning prompt
 - react-textarea-autosize >> content input
 
+- pusher pusher-js >> websocket: make realtime spread
 - use middleware >> protect sensitiveRoutes and redirect
 
 - lucide-react >> UI: icon logo, transition
@@ -22,7 +23,8 @@ A full-stack realtime messaging chat application by NextJs
 - tailwind-merge >> Class merging
 - clsx >> Conditional classes
 - class-variance-authority >> Variants
-- tailwindcss/forms >> plugin: make form better 
+- tailwindcss/forms >> plugin: make form better
+- react-loading-skeleton >> loading transition between pages
 
 - Built with TypeScript
 

@@ -1,4 +1,4 @@
-import { messageArrayValidator } from '@/lib/validations/message'
+import { Message,messageArrayValidator } from '@/lib/validations/message'
 import { fetchRedis } from './redis'
 import { notFound } from 'next/navigation'
 
