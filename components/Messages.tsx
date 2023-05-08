@@ -3,9 +3,11 @@
 import { pusherClient } from '@/lib/pusher'
 import { cn, toPusherKey } from '@/lib/utils'
 import { Message } from '@/lib/validations/message'
+import axios from 'axios'
 import { format } from 'date-fns'
 import Image from 'next/image'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import useSWR from 'swr'
 
 interface MessagesProps {
   initialMessages: Message[]
@@ -24,12 +26,24 @@ const Messages: FC<MessagesProps> = ({
 }) => {
   const [messages, setMessages] = useState<Message[]>(initialMessages)
 
+  // make messages be right ,not just frist init messages
+  const fetcher = async (chatId: string) =>
+    await axios.post('/api/getmsg', { chatId }).then((res) => res.data)
+  const { data }: { data: Message[] } = useSWR(chatId, fetcher)
+
+  useLayoutEffect(() => {
+    if (data) {
+      setMessages(data)
+    }
+  }, [data])
+
   useEffect(() => {
     pusherClient.subscribe(toPusherKey(`chat:${chatId}`))
 
     // DEBUG: keep-alive
+    // make sure message before ...prev
     const messageHandler = (message: Message) => {
-      setMessages((prev) => [...prev, message])
+      setMessages((prev) => [message, ...prev])
     }
 
     pusherClient.bind('incoming-message', messageHandler)
@@ -52,7 +66,7 @@ const Messages: FC<MessagesProps> = ({
       className="flex h-full flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
       <div ref={scrollDownRef} />
 
-      {messages.map((message, index) => {
+      {messages?.map((message, index) => {
         const isCurrentUser = message.senderId === sessionId
 
         const hasNextMessageFromSameUser =
