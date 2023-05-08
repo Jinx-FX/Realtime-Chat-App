@@ -42,9 +42,58 @@ UI or style:
 - tailwindcss/forms >> plugin: make form better
 - react-loading-skeleton >> loading transition between pages
 
+data request:
+
+- axios
+- fetch
+- swr
+
 TypeScript:
 
 - Built with TypeScript
+
+## Run this project
+
+```sh
+git clone git@github.com:Jinx-FX/Realtime-Chat-App.git
+cd ./Realtime-Chat-App
+yarn add
+```
+
+then you need to add .env.local file:
+```env
+# its up to you
+NEXTAUTH_SECRET=supersecret
+
+# upstash redis db
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
+
+# you can use google client or github.
+# if you want to use google, you need to modify ./lib/auth.ts
+# and you can update google UI in the ./app/login/page.tsx
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+
+# pusher channel
+PUSHER_APP_ID = 
+NEXT_PUBLIC_PUSHER_APP_KEY = 
+PUSHER_APP_SECRET = 
+```
+
+after that:
+```sh
+yarn dev
+```
+
+## For me
+
+- client compoent vs. server compoent
+- pages/api vs. app/api
+- pusher: websocket use!
 
 ## Referrence
 

@@ -41,7 +41,7 @@ const Messages: FC<MessagesProps> = ({
     pusherClient.subscribe(toPusherKey(`chat:${chatId}`))
 
     // DEBUG: keep-alive
-    // make sure message before ...prev
+    // NOTE: make sure message before ...prev
     const messageHandler = (message: Message) => {
       setMessages((prev) => [message, ...prev])
     }

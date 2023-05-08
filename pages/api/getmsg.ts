@@ -17,5 +17,4 @@ export default async function handler(
       res.status(500).json({ message: 'Getting comments failed.' })
     }
   }
-  // res.status(200).json({ test: 'hello' })
 }
