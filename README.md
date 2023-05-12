@@ -2,6 +2,11 @@
 
 A full-stack realtime messaging chat application by NextJs
 
+## See more about NextJs 13
+
+- <https://github.com/lynn1286/learn-nextjs-13>
+- <https://juejin.cn/post/7185830116352589882>
+
 ## Features
 
 NEXTJS:
@@ -46,7 +51,9 @@ data request:
 
 - axios
 - fetch
-- swr
+- swr >> client-fetching 
+
+> **Good to know:** It's still possible to fetch data client-side. We recommend using a third-party library such as [`SWR`](https://swr.vercel.app/) or [`React Query`](https://tanstack.com/query/v4/) with Client Components. In the future, it'll also be possible to fetch data in Client Components using React's [`use()` hook](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#use-in-client-components).
 
 TypeScript:
 
@@ -89,12 +96,6 @@ after that:
 yarn dev
 ```
 
-## For me
-
-- client compoent vs. server compoent
-- pages/api vs. app/api
-- pusher: websocket use!
-
 ## Referrence
 
-- https://github.com/joschan21/nextjs-realtime-chat
+- <https://github.com/joschan21/nextjs-realtime-chat>
