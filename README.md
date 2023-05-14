@@ -2,6 +2,7 @@
 
 A full-stack realtime messaging chat application by NextJs
 
+**online addresses :** [realtime-chat-11tmbwfrq-jinx-fx.vercel.app](https://realtime-chat-f78lx4axe-jinx-fx.vercel.app)
 ## See more about NextJs 13
 
 - <https://github.com/lynn1286/learn-nextjs-13>
